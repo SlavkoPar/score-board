@@ -33,7 +33,7 @@ function Pair({pair}) {
             checked={pair.checked}
             onChange={e => {
               dispatch({
-                type: 'changed',
+                type: 'update',
                 pair: {
                   ...pair,
                   checked: e.target.checked

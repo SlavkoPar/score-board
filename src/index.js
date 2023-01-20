@@ -9,7 +9,7 @@ import { ScoreProvider } from './Board/ScoreProvider';
 import { ThemeProvider } from './ThemeContext'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-
+console.log('INDEXXXXXXXXXX')
 root.render(
   <React.StrictMode>
     <ScoreProvider>

@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer } from 'react';
+import { createContext, useContext, useEffect, useReducer } from 'react';
 
 const PairsContext = createContext(null);
 
@@ -23,14 +23,14 @@ export function usePairs() {
   return useContext(PairsContext);
 }
 
-export function usePairsDispatch() { 
+export function usePairsDispatch() {
   return useContext(PairsDispatchContext);
 };
 
 function pairsReducer(pairs, action) {
   switch (action.type) {
     case 'add': {
-      return [...pairs, {...action.pair}];
+      return [...pairs, { ...action.pair }];
     }
     case 'update': {
       const { pair } = action;
@@ -46,63 +46,62 @@ function pairsReducer(pairs, action) {
 }
 
 
-const initialPairs = [
-  { 
+const initialPairs = [{
     id: 1, HomeTeam: {
-      name: "Mexico", 
+      name: "Mexico",
       goals: 0
     },
     AwayTeam: {
-      name: "Canada", 
-      goals: 5 
+      name: "Canada",
+      goals: 5
     },
     startTime: new Date("2023-01-11T14:48:00.000Z"),
     checked: false
   }, {
-    id: 2, 
+    id: 2,
     HomeTeam: {
-      name: "Spain", 
+      name: "Spain",
       goals: 10
     },
     AwayTeam: {
-      name: "Brazil", 
-      goals: 2 
+      name: "Brazil",
+      goals: 2
     },
     startTime: new Date("2023-01-11T15:48:00.000Z"),
     checked: false
   }, {
-    id: 3, 
+    id: 3,
     HomeTeam: {
-      name: "Germany", 
+      name: "Germany",
       goals: 2
     },
     AwayTeam: {
-      name: "France", 
-      goals: 2 
+      name: "France",
+      goals: 2
     },
     startTime: new Date("2023-01-11T16:41:00.000Z"),
     checked: false
   }, {
-    id: 4, 
+    id: 4,
     HomeTeam: {
-      name: "Uruguay", 
+      name: "Uruguay",
       goals: 6
     },
     AwayTeam: {
-      name: "Italy", 
-      goals: 6 
+      name: "Italy",
+      goals: 6
     },
     startTime: new Date("2023-01-11T17:21:00.000Z"),
     checked: false
   }, {
-    id: 5, 
+    id: 5,
     HomeTeam: {
-      name: "Argentina", 
+      name: "Argentina",
       goals: 3
     },
     AwayTeam: {
-      name: "Australia", 
-      goals: 1 
+      name: "Australia",
+      goals: 1
     },
     startTime: new Date("2023-01-11T17:15:00.000Z"),
     checked: false

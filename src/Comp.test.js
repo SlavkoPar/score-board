@@ -4,7 +4,7 @@ import { render, screen } from '@testing-library/react';
 import Comp from './Comp';
 
 describe('Comp', () => {
-  it('renders App component', () => {
+  it('renders App component', async () => {
     render(<Comp />);
 
     // eslint-disable-next-line testing-library/no-debugging-utils

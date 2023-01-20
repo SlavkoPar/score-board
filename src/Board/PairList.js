@@ -13,7 +13,7 @@ export default function PairList({pairs}) {
         </tr>
       </thead>
       <tbody>
-        {pairs.map(pair => (
+        {pairs && pairs.map(pair => (
           <Pair key={pair.id} pair={pair} />
         ))}
       </tbody>

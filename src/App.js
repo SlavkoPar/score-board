@@ -29,8 +29,10 @@ export default function App() {
   */
 
   const pairs = usePairs()
+  console.log(2, pairs)
   const dispatch = usePairsDispatch();
-  const [id, setId] = useState(pairs.length + 1);
+
+  const [id, setId] = useState(6);
   const [summary, setSummary] = useState([]);
   const [showSummary, setShowSummary] = useState(false);
 
@@ -100,10 +102,10 @@ export default function App() {
       <h2>Football World Cup Score Board</h2>
       <PairList pairs={pairs} />
       <button onClick={addPair}>Simulate new game</button>
-      {pairs.length > 0 &&
+      {pairs && pairs.length > 0 &&
         <button className="ms-2" onClick={updateScore}>Simulate Update Score</button>
       }
-      {pairs.length > 0 &&
+      {pairs && pairs.length > 0 &&
         <button className="ms-2" onClick={finishGame}>Simulate Finish game</button>
       }
       <button className="ms-2" onClick={getSummary}>Summary by total score</button>

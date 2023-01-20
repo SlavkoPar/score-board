@@ -25,5 +25,6 @@ test('renders result', async () => {
   const cb = screen.getAllByTestId('cb3')[0];
   await user.click(cb);
   
+  expect(screen.getAllByTestId('cb3')[0]).not.toBeChecked();
   expect(screen.getAllByTestId('cb3')[1]).toBeChecked()
 });

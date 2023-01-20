@@ -29,7 +29,6 @@ export default function App() {
   */
 
   const pairs = usePairs()
-  console.log(2, pairs)
   const dispatch = usePairsDispatch();
 
   const [id, setId] = useState(6);

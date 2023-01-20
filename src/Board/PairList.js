@@ -29,10 +29,12 @@ function Pair({pair}) {
       <td>
         <label>
           <input
+            data-testid={'cb' + id}
+            name={'cb' + id}
             type="checkbox"
             checked={pair.checked}
-            onChange={e => {
-              dispatch({
+            onChange={async e => {
+              await dispatch({
                 type: 'update',
                 pair: {
                   ...pair,

@@ -1,8 +1,8 @@
-import { createContext, useContext, useEffect, useReducer } from 'react';
+import { createContext, useContext, useReducer } from 'react';
 
-const PairsContext = createContext(null);
+export const PairsContext = createContext(null);
 
-export const PairsDispatchContext = createContext(null);
+const PairsDispatchContext = createContext(null);
 
 export function ScoreProvider({ children }) {
   const [pairs, dispatch] = useReducer(
@@ -46,7 +46,7 @@ function pairsReducer(pairs, action) {
 }
 
 
-const initialPairs = [{
+export const initialPairs = [{
     id: 1, HomeTeam: {
       name: "Mexico",
       goals: 0

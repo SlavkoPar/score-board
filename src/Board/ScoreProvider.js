@@ -23,14 +23,14 @@ export function usePairs() {
   return useContext(PairsContext);
 }
 
-export function usePairsDispatch() {
-  return useContext(PairsDispatchContext);
+export const usePairsDispatch = () => {
+  return useContext(PairsDispatchContext)
 };
 
 function pairsReducer(pairs, action) {
   switch (action.type) {
     case 'add': {
-      return [...pairs, { ...action.pair }];
+      return [...pairs, { ...action.pair, id: Math.max(...pairs.map(p => p.id)) + 1 }];
     }
     case 'update': {
       const { pair } = action;

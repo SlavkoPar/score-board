@@ -6,18 +6,19 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 import { ScoreProvider } from './Board/ScoreProvider';
+
 import { ThemeProvider } from './ThemeContext'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-console.log('INDEXXXXXXXXXX')
+
 root.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <ScoreProvider>
       <ThemeProvider darkMode={true}>
         <App />
       </ThemeProvider>
     </ScoreProvider>
-  </React.StrictMode>
+  // </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

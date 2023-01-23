@@ -1,9 +1,8 @@
-import { useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { usePairs, usePairsDispatch } from './Board/ScoreProvider.js';
 import PairList from './Board/PairList'
 
 export default function App() {
-
   /*
   const ws = new WebSocket("wss://ws.bitstamp.net");
 
@@ -27,17 +26,16 @@ export default function App() {
     }
   };
   */
-
-  const pairs = usePairs()
+  
+  const pairs = usePairs();
   const dispatch = usePairsDispatch();
-
-  const [id, setId] = useState(6);
+ 
   const [summary, setSummary] = useState([]);
   const [showSummary, setShowSummary] = useState(false);
 
-  function addPair() {
+  const addPair = useCallback(() => {
     const pair = {
-      id,
+      id: -1,
       HomeTeam: {
         name: "Morocco",
         goals: 0
@@ -50,13 +48,11 @@ export default function App() {
       checked: false
     };
     dispatch({ type: 'add', pair });
-    setId(id + 1)
-  }
+  }, [dispatch])
 
   function updateScore() {
     // we assume index randomly
     const index = Math.floor(Math.random() * pairs.length)
-    console.log(pairs.length, index)
     const id = pairs[index].id;
     const pair = pairs.find(p => p.id === id);
     if (pair.HomeTeam.goals === 4 && pair.AwayTeam.goals === 1) {
@@ -73,7 +69,6 @@ export default function App() {
   function finishGame() {
     // we assume index randomly
     const index = Math.floor(Math.random() * pairs.length)
-    console.log(pairs.length, index)
     const id = pairs[index].id;
     const pair = pairs.find(p => p.id === id);
     dispatch({ type: 'finish', id: pair.id });
@@ -96,7 +91,14 @@ export default function App() {
     setSummary(res)
   }
 
+  useEffect(() => {
+    setTimeout(() => {
+      addPair();
+    }, 3000)
+  }, [addPair])
+
   return (
+    
     <div>
       <h2>Football World Cup Score Board</h2>
       <PairList pairs={pairs} />
